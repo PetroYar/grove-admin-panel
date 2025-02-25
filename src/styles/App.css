@@ -1,0 +1,23 @@
+:root {
+  --primary: rgb(119, 76, 43); 
+  --primary-dark: rgb(94, 60, 29); 
+  --primary-light: rgb(179, 136, 87);
+
+  --secondary: rgb(166, 115, 62);
+  --secondary-dark: rgb(140, 93, 50);
+  --secondary-light: rgb(214, 175, 110);
+
+  --background: rgb(244, 237, 224);
+  --surface: rgb(255, 255, 255);
+  --surface-dark: rgb(223, 217, 201);
+
+  --text-primary: rgb(47, 31, 15);
+  --text-secondary: rgb(107, 77, 41);
+  --text-light: rgb(255, 255, 255);
+
+  --success: rgb(94, 179, 98);
+  --error: rgb(217, 75, 22);
+  --warning: rgb(254, 140, 26);
+  --info: rgb(91, 105, 121);
+}
+

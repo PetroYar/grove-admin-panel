@@ -1,0 +1,9 @@
+.logo{
+  width: 80px;
+  background: var(--background);
+  margin: 0 auto;
+  border-radius: 70%;
+  img{
+    width: 100%;
+  }
+}

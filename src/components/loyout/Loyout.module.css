@@ -1,0 +1,30 @@
+.loyout {
+  display: flex;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+.aside {
+  background: var(--secondary-light);
+  width: 20vw;
+  padding: 1% 2%;
+  height: 100vh;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 1.2rem;
+}
+.active {
+  color: var(--surface) ;
+}
+.content{
+  /* background: var(--background); */
+  /* padding: 2%; */
+  width: 80vw;
+  position: relative;
+}
