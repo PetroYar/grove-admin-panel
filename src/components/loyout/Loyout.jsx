@@ -31,7 +31,7 @@ const Loyout = ({ children }) => {
             <li>
               <NavLink
                 className={({ isActive }) => (isActive ? styles.active : "")}
-                to={"/productsMeneger"}
+                to={"/productsManeger"}
               >
                 Продукти
               </NavLink>

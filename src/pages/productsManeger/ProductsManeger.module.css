@@ -3,9 +3,11 @@
   gap: 5px;
   margin-bottom: 20px;
 }
-.container{
-  max-height: 100vh;
+.container {
+
   padding: 2%;
+min-height: 100%;
+ 
 }
 
 .link {
@@ -21,7 +23,7 @@
   /* color: var(--surface); */
   background: var(--surface);
 }
-.content{
+.content {
+  background: var(--background);
   
- 
 }

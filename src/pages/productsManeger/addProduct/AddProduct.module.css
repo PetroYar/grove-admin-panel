@@ -1,0 +1,12 @@
+.container {
+  
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.img{
+  width: 50px;
+  margin:  0 auto;
+}

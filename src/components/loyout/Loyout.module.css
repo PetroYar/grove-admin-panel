@@ -23,8 +23,9 @@
   color: var(--surface) ;
 }
 .content{
-  /* background: var(--background); */
-  /* padding: 2%; */
+  padding: 2%;
   width: 80vw;
   position: relative;
+
+  background: var( --background);
 }

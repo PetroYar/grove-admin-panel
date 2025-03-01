@@ -1,5 +1,5 @@
 import { NavLink, Routes, Route } from "react-router-dom";
-import styles from "./ProductsMeneger.module.css";
+import styles from "./ProductsManeger.module.css";
 import Products from "./products/Products";
 import Categories from "./categories/Categories";
 import AddProduct from "./addProduct/AddProduct";
@@ -11,7 +11,7 @@ const ProductsMeneger = (props) => {
       <ul className={styles.btnsList}>
         <li>
           <NavLink
-            to="/productsMeneger/products"
+            to="/productsManeger/products"
             className={({ isActive }) =>
               `${styles.link} ${isActive ? styles.active : ""}`
             }
@@ -21,7 +21,7 @@ const ProductsMeneger = (props) => {
         </li>
         <li>
           <NavLink
-            to="/productsMeneger/categories"
+            to="/productsManeger/categories"
             className={({ isActive }) =>
               `${styles.link} ${isActive ? styles.active : ""}`
             }
@@ -31,7 +31,7 @@ const ProductsMeneger = (props) => {
         </li>
         <li>
           <NavLink
-            to="/productsMeneger/add-product"
+            to="/productsManeger/add-product"
             className={({ isActive }) =>
               `${styles.link} ${isActive ? styles.active : ""}`
             }
@@ -41,7 +41,7 @@ const ProductsMeneger = (props) => {
         </li>
         <li>
           <NavLink
-            to="/productsMeneger/add-category"
+            to="/productsManeger/add-category"
             className={({ isActive }) =>
               `${styles.link} ${isActive ? styles.active : ""}`
             }

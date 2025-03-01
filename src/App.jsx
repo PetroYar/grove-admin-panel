@@ -9,24 +9,22 @@ import Warehouse from "./pages/warehouse/Warehouse";
 import Login from "./pages/login/Login";
 import { useAuth } from "./hooks/useAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
-import ProductsMeneger from "./pages/productsMeneger/ProductsMeneger.jsx";
+import ProductsManeger from "./pages/productsManeger/ProductsManeger.jsx";
 
 function App() {
   const { admin } = useAuth();
   return (
-   
-      <Routes>
-        <Route path="/login" element={<Login />} />
+    <Routes>
+      <Route path="/login" element={<Login />} />
 
-        {/* <Route element={<ProtectedRoute admin={admin} />}> */}
-          <Route element={<Loyout />}>
+      <Route element={<ProtectedRoute admin={admin} />}>
+        <Route element={<Loyout />}>
           <Route path="/" element={<Deshboard />} />
-          <Route path="/productsMeneger/*" element={<ProductsMeneger />} />
+          <Route path="/productsManeger/*" element={<ProductsManeger />} />
           <Route path="/warehouse" element={<Warehouse />} />
-          </Route>
-        {/* </Route> */}
-      </Routes>
-   
+        </Route>
+      </Route>
+    </Routes>
   );
 }
 
