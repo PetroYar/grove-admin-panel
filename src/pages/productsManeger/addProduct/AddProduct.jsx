@@ -56,13 +56,11 @@ const AddProduct = () => {
           formattedValues,
           "PUT"
         );
-        alert("Продукт оновлено!");
       } else {
        
         await postDataWithFile("/product", formattedValues);
-        alert("Продукт додано!");
       }
-      console.log(formattedValues);
+      
       resetForm();
       setImage(null);
     } catch (error) {
@@ -72,7 +70,6 @@ const AddProduct = () => {
 useEffect(() => {
   if (product?.image) {
     setImage(product.image);
-    console.log(product)
   }
 }, [product]);
   return (

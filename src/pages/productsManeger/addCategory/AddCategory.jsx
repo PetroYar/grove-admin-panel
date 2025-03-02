@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import Button from "../../../components/button/Button";
@@ -7,10 +7,12 @@ import styles from "./AddCategory.module.css";
 import  { validationCategory } from "../../../libs/validation";
 import Input from "../../../components/input/Input";
 import { postDataWithFile } from "../../../libs/services";
+import { useLocation } from "react-router-dom";
 
 const AddCategory = (props) => {
   const [image, setImage] = useState(null);
-
+  const location = useLocation();
+  const category = location.state?.category || null;
   const handleFileChange = (event, setFieldValue) => {
     const file = event.target.files[0];
     if (file) {
@@ -24,21 +26,40 @@ const AddCategory = (props) => {
   };
 
   const addCategory = async (values, { resetForm }) => {
-    console.log(values);
+    
     try {
-      const data = await postDataWithFile("/category", values);
-     
+    
+        if (category) {
+          await postDataWithFile(
+            `/category/${category._id}`,
+            values,
+            "PUT"
+          );
+          alert('ок')
+        } else {
+          await postDataWithFile("/category", values);
+          alert('err')
+        }
+      
       resetForm();
       setImage(null);
     } catch (error) {
       console.error("Помилка при додаванні категорії", error);
     }
   };
-
+useEffect(() => {
+  if (category?.image) {
+    setImage(category.image);
+  }
+}, [category]);
   return (
     <div className={styles.container}>
       <Formik
-        initialValues={{ name: "", description: "", image: null }}
+        initialValues={{
+          name: category?.name || "",
+          description: category?.description || "",
+          image: category?.image || null,
+        }}
         validationSchema={validationCategory}
         onSubmit={addCategory}
       >
@@ -66,27 +87,36 @@ const AddCategory = (props) => {
 
             <div>
               <label>Фото</label>
-              <Input
-                type="file"
-                name="image"
-                accept="image/*"
-                onChange={(event) => handleFileChange(event, setFieldValue)}
-              />
+              {image ? (
+                <div>
+                  <img
+                    src={image}
+                    alt="Preview"
+                    className={styles.imagePreview}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setImage(null);
+                      setFieldValue("image", null);
+                    }}
+                  >
+                    Видалити
+                  </button>
+                </div>
+              ) : (
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={(event) => handleFileChange(event, setFieldValue)}
+                />
+              )}
               <ErrorMessage
                 name="image"
-                component="div"
+                component="span"
                 className={styles.error}
               />
             </div>
-
-            {image && (
-              <img
-                className={styles.img}
-                src={image}
-                alt="Прев’ю"
-                style={{ maxWidth: "200px", marginTop: "10px" }}
-              />
-            )}
 
             <Button type="submit">Додати</Button>
           </Form>
