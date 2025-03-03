@@ -31,9 +31,17 @@ const Loyout = ({ children }) => {
             <li>
               <NavLink
                 className={({ isActive }) => (isActive ? styles.active : "")}
-                to={"/productsManeger"}
+                to={"/products-maneger"}
               >
                 Продукти
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className={({ isActive }) => (isActive ? styles.active : "")}
+                to={"/content"}
+              >
+                Контент
               </NavLink>
             </li>
             <li>
@@ -44,14 +52,6 @@ const Loyout = ({ children }) => {
                 Склад
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink
-                className={({ isActive }) => (isActive ? styles.active : "")}
-                to={"/reviews"}
-              >
-                Відгуки
-              </NavLink>
-            </li> */}
           </ul>
         </nav>
         <Button onClick={logout}>Вийти</Button>

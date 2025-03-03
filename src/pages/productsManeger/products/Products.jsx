@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Products.module.css";
 import { deleteData, getData } from "../../../libs/services";
 import Table from "../../../components/table/Table";
@@ -11,7 +11,7 @@ const Products = () => {
     const getProducts = async () => {
       try {
         const data = await getData("/products");
-        console.log(data)
+        
         setData(data);
       } catch (error) {}
     };
@@ -20,7 +20,7 @@ const Products = () => {
   }, []);
 
   const editProduct = (product) => {
-    navigate("/productsManeger/add-product", { state: { product } });
+    navigate("/products-maneger/add-product", { state: { product } });
   };
 
   const deleteProduct = async (id) => {

@@ -10,6 +10,8 @@ import Login from "./pages/login/Login";
 import { useAuth } from "./hooks/useAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProductsManeger from "./pages/productsManeger/ProductsManeger.jsx";
+import Content from "./pages/content/Content.jsx";
+import EditContent from "./pages/content/editContent/EditContent.jsx";
 
 function App() {
   const { admin } = useAuth();
@@ -20,8 +22,10 @@ function App() {
       <Route element={<ProtectedRoute admin={admin} />}>
         <Route element={<Loyout />}>
           <Route path="/" element={<Deshboard />} />
-          <Route path="/productsManeger/*" element={<ProductsManeger />} />
+          <Route path="/products-maneger/*" element={<ProductsManeger />} />
           <Route path="/warehouse" element={<Warehouse />} />
+          <Route path="/content" element={<Content />} />
+          <Route path="/edit-content" element={<EditContent />} />
         </Route>
       </Route>
     </Routes>

@@ -11,7 +11,7 @@ const ProductsMeneger = (props) => {
       <ul className={styles.btnsList}>
         <li>
           <NavLink
-            to="/productsManeger/products"
+            to="/products-maneger/products"
             className={({ isActive }) =>
               `${styles.link} ${isActive ? styles.active : ""}`
             }
@@ -21,7 +21,7 @@ const ProductsMeneger = (props) => {
         </li>
         <li>
           <NavLink
-            to="/productsManeger/categories"
+            to="/products-maneger/categories"
             className={({ isActive }) =>
               `${styles.link} ${isActive ? styles.active : ""}`
             }
@@ -31,7 +31,7 @@ const ProductsMeneger = (props) => {
         </li>
         <li>
           <NavLink
-            to="/productsManeger/add-product"
+            to="/products-maneger/add-product"
             className={({ isActive }) =>
               `${styles.link} ${isActive ? styles.active : ""}`
             }
@@ -41,7 +41,7 @@ const ProductsMeneger = (props) => {
         </li>
         <li>
           <NavLink
-            to="/productsManeger/add-category"
+            to="/products-maneger/add-category"
             className={({ isActive }) =>
               `${styles.link} ${isActive ? styles.active : ""}`
             }
