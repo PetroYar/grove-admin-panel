@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Input from "../../../components/input/Input";
 import Button from "../../../components/button/Button";
 import { postDataWithFile } from "../../../libs/services";
+import styles from "./EditContent.module.css";
+
 
 const EditContent = (props) => {
   const location = useLocation();
@@ -37,13 +39,8 @@ const EditContent = (props) => {
         newContent.image = image;
       }
 
-      const updateContent = await postDataWithFile(
-        `/content/${content.key}`,
-        newContent,
-        "PUT"
-      );
+      await postDataWithFile(`/content/${content.key}`, newContent, "PUT");
 
-      console.log(updateContent);
       navigate(-1);
     } catch (error) {
       console.error("Помилка при оновленні контенту:", error);
@@ -60,13 +57,13 @@ const EditContent = (props) => {
   }, [content]);
 
   return (
-    <form onSubmit={editContent}>
+    <form onSubmit={editContent} className={styles.container}>
       {!content.value ? (
         <div>
-          <label>Фото</label>
+          <label>Зображення</label>
           {image ? (
-            <div>
-              <img src={imagePreview} alt="Preview" />
+            <div className={styles.imageContainer}>
+              <img width={"100px"} src={imagePreview} alt="Preview" />
 
               <button
                 type="button"
@@ -82,11 +79,14 @@ const EditContent = (props) => {
           )}
         </div>
       ) : (
-        <Input
-          textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
+        <div>
+          <label>Текст</label>
+          <Input
+            textarea
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+        </div>
       )}
 
       <Button>Підтвердити</Button>

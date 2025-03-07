@@ -75,14 +75,16 @@ const Content = () => {
                   <td>{index + 1}</td>
                   <td>{item.key}</td>
                   <td>
-                    {item.value ? item.value : <img style={{width:'50px'}} src={item.image}/>}
-                     
+                    {item.value ? (
+                      item.value
+                    ) : (
+                      <img style={{ width: "50px" }} src={item.image} />
+                    )}
                   </td>
                   <td>
                     <Button onClick={() => editContent(item)}>
                       <Pencil size={20} />
                     </Button>
-                  
                   </td>
                 </tr>
               ))

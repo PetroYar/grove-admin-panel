@@ -3,10 +3,14 @@ import styles from "./Categories.module.css";
 import { deleteData, getData } from "../../../libs/services";
 import Table from "../../../components/table/Table";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import ConfirmModal from "../../../components/сonfirmModal/ConfirmModal";
 
 const Categories = (props) => {
   const [categories, setCategories] = useState([]);
-const navigation = useNavigate()
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const navigation = useNavigate();
   useEffect(() => {
     const getCategories = async () => {
       try {
@@ -25,18 +29,35 @@ const navigation = useNavigate()
       setCategories((prevCategory) =>
         prevCategory.filter((category) => category._id !== id)
       );
+      toast.success("Категорію видаленно!");
     } catch (error) {
       console.error("Помилка при видаленні категорії:", error);
+    }finally{
+      setIsModalOpen(false)
     }
   };
 
-const editCategory= (category)=>{
-navigation("/productsManeger/add-category", { state: { category } });
-}
-
+  const editCategory = (category) => {
+    navigation("/productsManeger/add-category", { state: { category } });
+  };
+  const handleDeleteClick = (category) => {
+    setSelectedCategory(category);
+    setIsModalOpen(true);
+  };
   return (
     <div className={styles.container}>
-      <Table data={categories} onDelete={deleteCategory} onEdit={editCategory} />
+      <Table
+        data={categories}
+        onDelete={handleDeleteClick}
+        onEdit={editCategory}
+      />
+      {isModalOpen && (
+        <ConfirmModal
+          message={`Ви впевнені, що хочете видалити категорію ${selectedCategory?.name} ?`}
+          onCancel={() => setIsModalOpen(false)}
+          onConfirm={() => deleteCategory(selectedCategory._id)}
+        />
+      )}
     </div>
   );
 };

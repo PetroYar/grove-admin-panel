@@ -1,12 +1,47 @@
-.container {
-  
-}
 .form {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-y: auto;
 }
-.img{
+.img {
   width: 50px;
-  margin:  0 auto;
+  margin: 0 auto;
+}
+.container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.error {
+  color: red;
+  font-size: 14px;
+}
+.checkedContainer {
+display: flex;
+flex-direction: column;
+gap: 10px;
+justify-content: space-between;
+  
+}
+.checked{
+  
+  display: flex;gap: 20px;
+  width: 400px;
+
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+  justify-content:space-between;
+  input{
+    width: 20px;
+  }
+}
+.imagePreview{
+  width: 100px;
+}
+.imageContainer{
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }

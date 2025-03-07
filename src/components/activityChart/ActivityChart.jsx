@@ -38,7 +38,7 @@ const ActivityChart = () => {
   }, []);
 
   return (
-    <div style={{ width: "100%", maxWidth: "400px" }}>
+    <div style={{ width: "100%", maxWidth: "700px" }}>
       {chartData ? <Line data={chartData} /> : <span>Loading...</span>}
     </div>
   );

@@ -1,19 +1,10 @@
-.container {
+.reviews {
   margin: 0 auto;
   padding: 20px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-}
-
-select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
 }
 
 .table {
@@ -27,6 +18,8 @@ select {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: left;
+  min-height: 75px;
+  height: 100%;
 }
 
 .table th {
@@ -39,3 +32,12 @@ select {
   border-radius: 4px;
 }
 
+.buttons {
+  display: flex;
+  gap: 5px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
