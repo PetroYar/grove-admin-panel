@@ -4,6 +4,7 @@ import Input from "../../../components/input/Input";
 import Button from "../../../components/button/Button";
 import { postDataWithFile } from "../../../libs/services";
 import styles from "./EditContent.module.css";
+import toast from "react-hot-toast";
 
 
 const EditContent = (props) => {
@@ -42,6 +43,7 @@ const EditContent = (props) => {
       await postDataWithFile(`/content/${content.key}`, newContent, "PUT");
 
       navigate(-1);
+      toast.success( `Конетент ${content.key} змінено `)
     } catch (error) {
       console.error("Помилка при оновленні контенту:", error);
     }
