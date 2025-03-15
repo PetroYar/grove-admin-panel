@@ -84,6 +84,7 @@ const AddProduct = () => {
           name: product?.name || "",
           description: product?.description || "",
           price: product?.price || "",
+          size: product?.size || "",
           categories: product?.categories?.map((cat) => cat._id) || [],
           image: product?.image || null,
           discount: product?.discount || "",
@@ -103,11 +104,13 @@ const AddProduct = () => {
             if (!product?.name) setFieldValue("seo.title", values.name);
             setFieldValue(
               "seo.description",
-              values.description + values.price + "UAN"
+              values.description + values.price + "UAN" + 'size' + values.size
             );
             setFieldValue(
               "seo.keywords",
-              `${values.description},${values.price + "UAN"},${values.discount + "%discount"}`
+              `${values.description},${values.price + "UAN"},${
+                values.discount + "%discount"
+              },${+"size" + values.size}`
             );
           }, [values.name, values.description, values.price]);
           return (
@@ -134,14 +137,22 @@ const AddProduct = () => {
 
               <div>
                 <label>Ціна</label>
-                <Field type="number" name="price" />
+                <Field type="text" name="price" />
                 <ErrorMessage
                   name="price"
                   component="span"
                   className={styles.error}
                 />
               </div>
-
+              <div>
+                <label>Розмір</label>
+                <Field type="text" name="size" />
+                <ErrorMessage
+                  name="size"
+                  component="span"
+                  className={styles.error}
+                />
+              </div>
               <div className={styles.checkedContainer}>
                 <label>Категорії</label>
                 {categories.length > 0 ? (

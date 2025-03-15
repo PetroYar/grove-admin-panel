@@ -2,10 +2,9 @@ import * as Yup from "yup";
 export const validationProduct = Yup.object().shape({
   name: Yup.string().required("Обов'язкове поле"),
   description: Yup.string().required("Обов'язкове поле"),
-  price: Yup.number()
-    .required("Обов'язкове поле")
-    .positive("Має бути більше 0"),
-  // categoryId: Yup.string().required("Оберіть категорію"),
+  price: Yup.string().required("Обов'язкове поле"),
+
+  size: Yup.string().required("Обов'язкове поле"),
   image: Yup.mixed().required("Додайте фото"),
   discount: Yup.number().min(0, "Знижка не може бути меншою за 0"),
   seo: Yup.object().shape({
@@ -21,8 +20,6 @@ export const validationProduct = Yup.object().shape({
 export const validationCategory = Yup.object().shape({
   name: Yup.string().required("Обов'язкове поле"),
   description: Yup.string().required("Обов'язкове поле"),
-  
-  image: Yup.mixed().required("Додайте фото"),
-  
-});
 
+  image: Yup.mixed().required("Додайте фото"),
+});

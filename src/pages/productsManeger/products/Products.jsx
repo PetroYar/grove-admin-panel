@@ -61,6 +61,7 @@ const handleDeleteClick = (product) => {
         onDelete={handleDeleteClick}
         onEdit={editProduct}
         category
+        size
       />
       {isModalOpen && (
         <ConfirmModal
@@ -69,6 +70,7 @@ const handleDeleteClick = (product) => {
           onConfirm={() => deleteProduct(selectedProduct._id)}
         />
       )}
+      
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import Button from "../button/Button";
 import styles from "./Table.module.css";
 import { Pencil, Trash } from "lucide-react";
-const Table = ({ data = [], price, category, onEdit, onDelete }) => {
+const Table = ({ data = [], price, category, onEdit, onDelete, size}) => {
   return (
     <div className={styles.container}>
       <table className={styles.table}>
@@ -12,6 +12,7 @@ const Table = ({ data = [], price, category, onEdit, onDelete }) => {
             <th>Назва</th>
             <th>Опис</th>
             {price && <th>Ціна</th>}
+            {size && <th>Розмір</th>}
 
             {category && <th>Категорії</th>}
 
@@ -34,6 +35,8 @@ const Table = ({ data = [], price, category, onEdit, onDelete }) => {
               <td>{item.name}</td>
               <td>{item.description}</td>
               {price && <td>{item.price} грн</td>}
+              {size && <td>{item.size}</td>}
+
               {category && (
                 <td>
                   {category && item.categories.length > 0

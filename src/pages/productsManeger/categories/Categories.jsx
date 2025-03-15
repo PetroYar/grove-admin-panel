@@ -38,7 +38,7 @@ const Categories = (props) => {
   };
 
   const editCategory = (category) => {
-    navigation("/productsManeger/add-category", { state: { category } });
+    navigation("/products-maneger/add-category", { state: { category } });
   };
   const handleDeleteClick = (category) => {
     setSelectedCategory(category);
