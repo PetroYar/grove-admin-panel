@@ -62,6 +62,7 @@ const handleDeleteClick = (product) => {
         onEdit={editProduct}
         category
         size
+        discount
       />
       {isModalOpen && (
         <ConfirmModal

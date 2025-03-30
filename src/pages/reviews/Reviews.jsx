@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Reviews.module.css";
-import { getData, updateData } from "../../libs/services";
+import { deleteData, getData, updateData } from "../../libs/services";
 import { formatDate } from "../../libs/formatDate";
 import Button from "../../components/button/Button";
 import toast from "react-hot-toast";
+import { Trash } from "lucide-react";
 
 const Reviews = (props) => {
   const [data, setData] = useState();
@@ -40,6 +41,27 @@ const handleTogglePublish = async (id, currentStatus) => {
     console.error("Помилка оновлення коментаря:", error);
   }
 };
+
+const handleDelete = async (id) => {
+  try {
+    await deleteData(`/comment/${id}`); 
+
+    
+    setData((prevData) => ({
+      ...prevData,
+      comments: prevData.comments.filter((comment) => comment._id !== id),
+    }));
+     
+      
+
+    toast.success("Коментар успішно видалено"); 
+  } catch (error) {
+    console.error("Помилка при видаленні коментаря:", error);
+    toast.error("Не вдалося видалити коментар"); 
+  }
+};
+
+
   return (
     <div className={styles.reviews}>
       <h2>Відгуки</h2>
@@ -52,6 +74,7 @@ const handleTogglePublish = async (id, currentStatus) => {
             <th>Дата</th>
             <th>Опубліковано</th>
             <th>Опублікувати / Скасувати</th>
+            <th>Дія</th>
           </tr>
         </thead>
         <tbody>
@@ -69,6 +92,11 @@ const handleTogglePublish = async (id, currentStatus) => {
                   }
                 >
                   {comment.isPublished ? "Сховати" : "Опублікувати"}
+                </Button>
+              </td>
+              <td>
+                <Button onClick={() => handleDelete(comment._id)}>
+                  <Trash />
                 </Button>
               </td>
             </tr>
