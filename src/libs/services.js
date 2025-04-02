@@ -2,7 +2,8 @@ import axios from "axios";
 
 
 const URL = "https://grove-server-one.vercel.app/api";
-// const URL = "localhost:5000/api";
+// const URL =
+//   "http://localhost:5000/api" ;
 
 const getToken = () => {
   return localStorage.getItem("token") ?? "";
@@ -73,17 +74,14 @@ export const postDataWithFile = async (url, data, method = "POST") => {
   const token = getToken();
   const formData = new FormData();
 
-  // Додаємо дані в formData
   for (let key in data) {
     if (data.hasOwnProperty(key)) {
       if (key === "seo") {
-        // Якщо це об'єкт SEO, конвертуємо його в JSON
+      
         formData.append(key, JSON.stringify(data[key]));
       } else if (data[key] instanceof File) {
-        // Якщо це файл, додаємо його
         formData.append(key, data[key]);
       } else {
-        // Якщо це звичайне поле, додаємо його
         formData.append(key, data[key]);
       }
     }
