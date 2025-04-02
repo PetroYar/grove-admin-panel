@@ -44,7 +44,7 @@ export const postData = async (params, body) => {
   }
 };
 export const updateData = async (params, body) => {
-  const token = getToken(); 
+  const token = getToken();
   try {
     const response = await API.put(params, body);
     return response.data;
