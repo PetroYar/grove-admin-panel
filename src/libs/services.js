@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const URL = "http://grove-server-one.vercel.app/api";
+const URL =
+  "https://grove-server-one.vercel.app/";
 // const URL = "localhost:5000/api";
 
 const getToken = () => {
